@@ -37,13 +37,15 @@ datasources:
     password: root
     schema-generate: CREATE_DROP
     dialect: org.hibernate.dialect.PostgreSQL95Dialect
+
+
 jpa:
   default:
     properties:
       hibernate:
         hbm2ddl:
           auto: none
-        show_sql: true
+        show_sql: false
 flyway:
   datasources:
     default:
