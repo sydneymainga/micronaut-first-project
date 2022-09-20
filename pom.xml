@@ -16,10 +16,11 @@
   <properties>
     <packaging>jar</packaging>
     <jdk.version>1.8</jdk.version>
-    <release.version>1.8</release.version>
+    <!--<release.version>1.8</release.version>-->
+    <java.version>8</java.version>
     <micronaut.version>3.1.4</micronaut.version>
     <micronaut.data.version>3.2.0</micronaut.data.version>
-<!--    <exec.mainClass>com.udemy.Application</exec.mainClass>-->
+
     <exec.mainClass>com.example.Application</exec.mainClass>
     <micronaut.runtime>netty</micronaut.runtime>
   </properties>
@@ -155,22 +156,35 @@
 
   <build>
     <plugins>
+
+        <!--<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>-->
+
       <plugin>
         <groupId>io.micronaut.build</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+
         <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
           <fork>true</fork>
-          <compilerArgs>
+          <!--<compilerArgs>
             <arg>-Amicronaut.processing.group=helloLaunch</arg>
             <arg>-Amicronaut.processing.module=hello-world-launch</arg>
-           <!-- <arg>-J-Dmicronaut.openapi.views.spec=rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop</arg>-->
-          </compilerArgs>
-          <!-- Uncomment to enable incremental compilation -->
-          <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+
+          </compilerArgs>-->
+
           <annotationProcessorPaths combine.self="override">
             <path>
               <!-- must precede micronaut-inject-java -->
@@ -201,10 +215,7 @@
             </path>
 
           </annotationProcessorPaths>
-          <!--<compilerArgs>
-            <arg>-Amicronaut.processing.group=com.udemy</arg>
-            <arg>-Amicronaut.processing.module=user-service</arg>
-          </compilerArgs>-->
+
         </configuration>
       </plugin>
     </plugins>
